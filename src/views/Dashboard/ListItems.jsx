@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState} from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -14,16 +14,17 @@ import ForumIcon from "@mui/icons-material/Forum";
 import InboxIcon from "@mui/icons-material/Inbox";
 import MailIcon from "@mui/icons-material/Mail";
 import StarIcon from "@mui/icons-material/Star";
-import {HOME_ROUTE} from "../utils/constants/routes";
 import List from "@mui/material/List";
 import {Collapse} from "@mui/material";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
+import {NavLink} from "react-router-dom";
+import {HOME_ROUTE} from "../../utils/constants/routes";
 
-export const MainListItems = () => {
-	const [accountsOpen, setAccountsOpen] = React.useState(false);
-	const [parsingOpen, setParsingOpen] = React.useState(false);
-	const [mailOpen, setMailOpen] = React.useState(false);
-	const [settingsOpen, setSettingsOpen] = React.useState(false);
+const ListItems = () => {
+	const [accountsOpen, setAccountsOpen] = useState(false);
+	const [parsingOpen, setParsingOpen] = useState(false);
+	const [mailOpen, setMailOpen] = useState(false);
+	const [settingsOpen, setSettingsOpen] = useState(false);
 
 	const handleAccountsClick = () => {
 		setAccountsOpen(!accountsOpen);
@@ -42,13 +43,15 @@ export const MainListItems = () => {
 	};
 
 	return (
-		<React.Fragment>
-			<ListItemButton href={HOME_ROUTE}>
-				<ListItemIcon>
-					<HomeIcon />
-				</ListItemIcon>
-				<ListItemText primary="Главная" />
-			</ListItemButton>
+		<>
+			<NavLink to={HOME_ROUTE}>
+				<ListItemButton>
+					<ListItemIcon>
+						<HomeIcon />
+					</ListItemIcon>
+					<ListItemText primary="Главная" />
+				</ListItemButton>
+			</NavLink>
 
 			<ListItemButton onClick={handleAccountsClick}>
 				<ListItemIcon>
@@ -59,13 +62,13 @@ export const MainListItems = () => {
 			</ListItemButton>
 			<Collapse in={accountsOpen} timeout="auto" unmountOnExit>
 				<List component="div" disablePadding>
-					<ListItemButton sx={{ pl: 4 }}>
+					<ListItemButton sx={{pl: 4}}>
 						<ListItemIcon>
 							<PersonIcon />
 						</ListItemIcon>
 						<ListItemText primary="Мои" />
 					</ListItemButton>
-					<ListItemButton sx={{ pl: 4 }}>
+					<ListItemButton sx={{pl: 4}}>
 						<ListItemIcon>
 							<StarIcon />
 						</ListItemIcon>
@@ -83,7 +86,7 @@ export const MainListItems = () => {
 			</ListItemButton>
 			<Collapse in={parsingOpen} timeout="auto" unmountOnExit>
 				<List component="div" disablePadding>
-					<ListItemButton sx={{ pl: 4 }}>
+					<ListItemButton sx={{pl: 4}}>
 						<ListItemIcon>
 							<GroupsIcon />
 						</ListItemIcon>
@@ -101,13 +104,13 @@ export const MainListItems = () => {
 			</ListItemButton>
 			<Collapse in={mailOpen} timeout="auto" unmountOnExit>
 				<List component="div" disablePadding>
-					<ListItemButton sx={{ pl: 4 }}>
+					<ListItemButton sx={{pl: 4}}>
 						<ListItemIcon>
 							<ForumIcon />
 						</ListItemIcon>
 						<ListItemText primary="По чатам" />
 					</ListItemButton>
-					<ListItemButton sx={{ pl: 4 }}>
+					<ListItemButton sx={{pl: 4}}>
 						<ListItemIcon>
 							<InboxIcon />
 						</ListItemIcon>
@@ -125,13 +128,13 @@ export const MainListItems = () => {
 			</ListItemButton>
 			<Collapse in={settingsOpen} timeout="auto" unmountOnExit>
 				<List component="div" disablePadding>
-					<ListItemButton sx={{ pl: 4 }}>
+					<ListItemButton sx={{pl: 4}}>
 						<ListItemIcon>
 							<DnsIcon />
 						</ListItemIcon>
 						<ListItemText primary="Прокси" />
 					</ListItemButton>
-					<ListItemButton sx={{ pl: 4 }}>
+					<ListItemButton sx={{pl: 4}}>
 						<ListItemIcon>
 							<ApiIcon />
 						</ListItemIcon>
@@ -146,7 +149,8 @@ export const MainListItems = () => {
 				</ListItemIcon>
 				<ListItemText primary="Мой профиль" />
 			</ListItemButton>
-		</React.Fragment>
+		</>
 	);
 };
 
+export default ListItems;
