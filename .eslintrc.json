@@ -1,0 +1,34 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react-hooks/recommended",
+		"plugin:react/recommended",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/react",
+		"airbnb",
+		"plugin:prettier/recommended",
+		"prettier"
+	],
+	"plugins": [
+		"react",
+		"react-hooks",
+		"import",
+		"prettier"
+	],
+	"rules": {
+		"prettier/prettier": "error",
+		"arrow-body-style": "off",
+		"no-param-reassign": ["error", { "props": false }],
+		"react/prop-types": "off",
+		"no-console": "off",
+		"react/function-component-definition": ["error", {
+			"namedComponents": "arrow-function"
+		}],
+		"react/jsx-fragments": "off"
+	}
+}
